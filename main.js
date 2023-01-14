@@ -15,7 +15,7 @@ createWebcam({
   },
 }).then((e) => {
   btnCamera.disabled = false;
-});
+}); 
 
 
   // Envoi de la premiere photo a openai
