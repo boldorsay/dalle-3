@@ -39,7 +39,7 @@ function init() {
   geometry.scale(-1, 1, 1);
 
   const material = new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load("img/test.jpg"),
+    map: new THREE.TextureLoader().load("./public/img/test.jpg"),
   });
 
   const mesh = new THREE.Mesh(geometry, material);
