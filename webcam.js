@@ -1,13 +1,12 @@
 // Put variables in global scope to make them available to the browser console.
 
-
 let video;
 
 export async function createWebcam({ element, constraints }) {
   video = element;
   video.autoplay = true;
   video.muted = true;
-  video.setAttribute('playsinline', 'true');
+  video.setAttribute("playsinline", "true");
 
   constraints = {
     audio: false,
@@ -46,46 +45,50 @@ export async function createWebcam({ element, constraints }) {
     video.oncanplay = () => {
       video.width = video.videoWidth;
       video.height = video.videoHeight;
-      video.play()
+      video.play();
       resolve(video);
     };
   });
 }
 
-export async function cameraToImage(img) {
-
+export async function cameraToImage(cam) {
+  // console.log(camera)
   // create a canvas element
-  let canvas = document.createElement('canvas');
-  // take a screenshot of the img and put it on the canvas
-  canvas.width = img.videoWidth;
-  canvas.height = img.videoHeight;
-  canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+  console.dir(cam);
+
+  let canvas = document.createElement("canvas");
+  // take a screenshot of the cam and put it on the canvas
+  canvas.width = cam.height;
+  canvas.height = cam.width;
+  canvas.getContext("2d").drawImage(cam, 0, 0, canvas.width, canvas.height);
+
   // extract the image data from the canvas
+
   var dataURL = canvas.toDataURL();
 
-  var img = new Image();
+  let img = new Image();
 
   img.src = dataURL;
-  
+
   // Return the image element
-  return img;
-
-
+  return new Promise((resolve) => {
+    img.onload = () => resolve(img);
+  });
 }
 export async function canvasToImage(canvastoIMG) {
-
   // create a canvas element
-  let canvas = document.createElement('canvas');
+  let canvas = document.createElement("canvas");
   // take a screenshot of the img and put it on the canvas
   canvas.width = canvastoIMG.width;
   canvas.height = canvastoIMG.height;
-
 
   let dataURLCanvasIMG = canvastoIMG.toDataURL();
   let imageCanvas = new Image();
   imageCanvas.src = dataURLCanvasIMG;
 
-  canvas.getContext('2d').drawImage(imageCanvas, 0, 0, canvas.width, canvas.height);
+  canvas
+    .getContext("2d")
+    .drawImage(imageCanvas, 0, 0, canvas.width, canvas.height);
   // extract the image data from the canvas
   let dataURL = canvas.toDataURL();
 
@@ -93,12 +96,6 @@ export async function canvasToImage(canvastoIMG) {
 
   img.src = dataURL;
 
-  // console.log(img);
-  
   // Return the image element
   return imageCanvas;
-
-
 }
-
-
