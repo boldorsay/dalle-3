@@ -1,8 +1,7 @@
 import { generateContent } from "./openai";
 import { generateTexture, generateTextureMiddle } from "./texturiser";
 import { canvasToImage } from "./webcam";
-let canvasLarge = document.createElement("canvas");
-canvasLarge.id = "canvasLarge";
+
 
 
 
@@ -43,14 +42,19 @@ export async function transfertMiddle(img, size, prompt) {
 
 
 export async function exportCenter(img1, img2) {
+  let canvasLarge = document.createElement("canvas");
+canvasLarge.id = "canvasLarge";
+
   canvasLarge.width = 1024 * 2;
   canvasLarge.height = 1024;
-  const ctx = canvasLarge.getContext("2d");
+  let ctx = canvasLarge.getContext("2d");
 
-  ctx.drawImage(img1, 0, 0);
-  ctx.drawImage(img2, 1024, 0);
+
+  ctx.drawImage(img2, 0, 0);
+  ctx.drawImage(img1, 1024, 0);
 
   let imageCanvasHtml = await canvasToImage(canvasLarge)
+  console.log(imageCanvasHtml);
 
 
 
@@ -59,6 +63,9 @@ export async function exportCenter(img1, img2) {
   canvasCenter.height = 1024;
   canvasCenter.getContext('2d').drawImage(imageCanvasHtml, 512, 0, 1024, 1024, 0, 0, 1024, 1024);
   canvasCenter.id = "canvasCenter"
+  
+
+
 
 
   let imageCanvasCenterHtml = await canvasToImage(canvasCenter)
@@ -95,3 +102,4 @@ export async function saveTheImage(imgToSave) {
  
 }
 
+ 

@@ -54,12 +54,11 @@ export async function createWebcam({ element, constraints }) {
 export async function cameraToImage(cam) {
   // console.log(camera)
   // create a canvas element
-  console.dir(cam);
 
   let canvas = document.createElement("canvas");
   // take a screenshot of the cam and put it on the canvas
-  canvas.width = cam.height;
-  canvas.height = cam.width;
+  canvas.width = cam.width;
+  canvas.height = cam.height;
   canvas.getContext("2d").drawImage(cam, 0, 0, canvas.width, canvas.height);
 
   // extract the image data from the canvas
@@ -82,13 +81,11 @@ export async function canvasToImage(canvastoIMG) {
   canvas.width = canvastoIMG.width;
   canvas.height = canvastoIMG.height;
 
-  let dataURLCanvasIMG = canvastoIMG.toDataURL();
-  let imageCanvas = new Image();
-  imageCanvas.src = dataURLCanvasIMG;
+
 
   canvas
     .getContext("2d")
-    .drawImage(imageCanvas, 0, 0, canvas.width, canvas.height);
+    .drawImage(canvastoIMG, 0, 0, canvas.width, canvas.height);
   // extract the image data from the canvas
   let dataURL = canvas.toDataURL();
 
@@ -97,5 +94,8 @@ export async function canvasToImage(canvastoIMG) {
   img.src = dataURL;
 
   // Return the image element
-  return imageCanvas;
+
+  return new Promise((resolve) => {
+    img.onload = () => resolve(img);
+  });
 }

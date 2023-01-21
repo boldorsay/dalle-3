@@ -11,7 +11,11 @@ export const sphere = () => {
   function addTexture(canvas) {
     ctx = canvas.getContext("2d");
     texture = new THREE.CanvasTexture(ctx.canvas);
-    // texture =  new THREE.TextureLoader().load( 'public/img/test.jpg');
+    init();
+  }
+
+  function addTextureImg() {
+    texture =  new THREE.TextureLoader().load( 'public/img/test.jpg');
     init();
   }
 
@@ -81,5 +85,5 @@ export const sphere = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
   }
 
-  return {init, animate, addTexture};
+  return {init, animate, addTexture, addTextureImg};
 };

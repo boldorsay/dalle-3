@@ -29,12 +29,20 @@ export async function generateTexture({ img, x, sx, sw, size = 1024 }) {
     canvas.height
   );
 
+
+
+
+
+
+
   const imgFile = await canvasToFile(canvas);
 
   // canvas.fillStyle = "white";
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "white";
   ctx.fillRect(xX, 0, dw, canvas.height);
+
+
 
   const imgMask = await canvasToFile(canvas);
 
