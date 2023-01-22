@@ -22,5 +22,6 @@ export function loadImage(url) {
   return new Promise((resolve) => {
     img.onload = () => resolve(img);
     img.src = url;
+    
   });
 }

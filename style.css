@@ -11,7 +11,7 @@ html, body{
   padding:0;
   margin:0;
   width:100vw;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   /* overflow-y: hidden; */
 }
 .header{
@@ -72,17 +72,20 @@ img{
   min-width: 100vw;
   min-height: 100vh;
   position: absolute;
+  z-index: 20; 
+
+
   
 }
 #murTop {
   top : -901px;
-  transition: transform 2s ease-in-out;
+  transition: transform 8s ease-in-out;
 
   
 }
 #murBottom {
   bottom:  -896px;
-  transition: transform 2s ease-in-out;
+  transition: transform 8s ease-in-out;
 
   
 }
@@ -97,14 +100,15 @@ img{
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 50;
  }
 
 #moon1,
 #moon2,
 #moon3,
 #moon4{
-  width: 50px;
-  height: 50px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   background: #fff;
   box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #0099ff, 0 0 70px #0099ff, 0 0 80px #0099ff, 0 0 100px #0099ff, 0 0 150px #0099ff;
@@ -113,6 +117,7 @@ img{
   left: 50%;
   transform: translate(-50%, -50%);
   animation: move 4s linear infinite;
+  z-index: 50;
   
 }
 /* .reverse{

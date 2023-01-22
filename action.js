@@ -54,7 +54,6 @@ canvasLarge.id = "canvasLarge";
   ctx.drawImage(img1, 1024, 0);
 
   let imageCanvasHtml = await canvasToImage(canvasLarge)
-  console.log(imageCanvasHtml);
 
 
 

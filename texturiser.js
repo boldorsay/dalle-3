@@ -1,4 +1,4 @@
-import { canvasToFile } from "./utils";
+import { canvasToFile, loadImage } from "./utils";
 
 const canvas = document.createElement("canvas");
 const ctx = canvas.getContext("2d");
@@ -42,9 +42,15 @@ export async function generateTexture({ img, x, sx, sw, size = 1024 }) {
   ctx.fillStyle = "white";
   ctx.fillRect(xX, 0, dw, canvas.height);
 
+  let dataURL = canvas.toDataURL();
 
+
+
+
+  
 
   const imgMask = await canvasToFile(canvas);
+
 
   return [imgFile, imgMask];
 }

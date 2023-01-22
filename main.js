@@ -11,6 +11,7 @@ import { sphere } from "./sphere";
 import { createWebcam, cameraToImage } from "./webcam";
 
 window.onload = () => {
+  eruda.init()
   const camera = document.querySelector("#videoCamera");
   const canvas = document.querySelector("#canvas");
   const btnCamera = document.querySelector("#btnCamera");
@@ -27,6 +28,7 @@ window.onload = () => {
   let buttonSend = document.querySelector("#buttonSend");
   let debug = document.querySelector("#debug");
   let prompt;
+  let imageTake
 
 
   createWebcam({
@@ -41,8 +43,11 @@ window.onload = () => {
 
 
     requestPermission();
+    let imgScreen = await cameraToImage(camera);
+    imageTake = imgScreen;
 
-    // camera.pause()
+
+    camera.pause()
 
     retry.style.display = "block"
     btnCamera.style.display = "none"
@@ -63,7 +68,6 @@ window.onload = () => {
     buttonSend.style.display = "none"
     retry.style.display = "none"
     
-    let imgScreen = await cameraToImage(camera);
     
 
 
@@ -72,42 +76,44 @@ window.onload = () => {
 
     
       closeWindows(imageTop, imageBottom);
-      const imageRight = await transfert(imgScreen, 0.2, 0.5, 0.7, prompt, 1024);
-      // debug.appendChild(imageRight)
-      // addName("imageRight", debug)
+      const imageRight = await transfert(imageTake, 0.18, 0.4, 0.8, prompt, 1024);
 
-      // // 
-      const imgLeft = await transfert(imgScreen, 0.5, 0.3, 0, prompt, 1024)
+ 
+      const imgLeft = await transfert(imageTake, 0.5173, 0.3, 0, prompt, 1024)
       const [imageCenter, canvasLarge] = await exportCenter(imageRight, imgLeft)
       
       
       // display the image on the body
       
-      // debug.appendChild(imgScreen)
+      // debug.appendChild(imageTake)
       // addName("imageScreen", debug)
    
+      // debug.appendChild(imageRight)
+      // addName("imageRight", debug)
       // debug.appendChild(imgLeft)
       // addName("imgLeft", debug)
       // debug.appendChild(canvasLarge)
       // addName("canvasLarge", debug)
       // debug.appendChild(imageCenter)
       // addName("imageCenter", debug)
+
+      // debug.appendChild(imageMiddle)
+      // addName("imageMiddle", debug)
+      // document.body.appendChild(imageFinal)
+      // addName("imageFinal", debug)
+
+      
       
       
       const imageMiddle = await transfertMiddle(imageCenter, 1024, prompt)
       const imageFinal = await showImage(canvasLarge, imageMiddle);
       
-      // debug.appendChild(imageMiddle)
-      // addName("imageMiddle", debug)
-      
-      // document.body.appendChild(imageFinal)
-      // addName("imageFinal", debug)
-
+   
 
       
       openWindows(imageTop, imageBottom);
+      sphereObj.addTexture(imageFinal);
 
-       sphereObj.addTexture(imageFinal);
   };
 
 
@@ -136,6 +142,7 @@ window.onload = () => {
     console.log("out");
 
     camera.play()
+    imageTake = null;
     retry.style.display = "none"
     btnCamera.style.display = "block"
     buttonSend.style.display = "none"

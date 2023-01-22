@@ -1,6 +1,12 @@
-
+let audio1
+let audio2
 
 export function closeWindows(top, bottom) {
+
+  audio1 = new Audio("Sound/door2.mp3");
+  audio1.loop = false;
+  audio1.play();
+
   
   top.style.transform = "translateY(100%)";
   bottom.style.transform = "translateY(-100%)";
@@ -27,15 +33,26 @@ export function closeWindows(top, bottom) {
     loader.appendChild(moon4);
 
     document.body.appendChild(loader);
-  }, 2000);
+    console.log("in animation");
+  }, 5000);
 }
 
 
 export function openWindows(top, bottom) {
 
+  audio1.pause();
+  audio1.src = '';
+  audio1 = null;
     loader.style.display = "none"
+    audio2 = new Audio("Sound/door.mp3");
+    audio2.loop = false;
+    audio2.play();
   top.style.transform = "translateY(-100%)";
   bottom.style.transform = "translateY(100%)";
+
+  
+
+  
 
   
 }
