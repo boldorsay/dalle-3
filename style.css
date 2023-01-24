@@ -17,7 +17,7 @@ html, body{
 .header{
   width: 100vw;
   height: 50vh;
-  background-image: url(../public/images/HEDET22_0005.png);
+  background-image: url(../images/HEDET22_0005.png);
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; 
