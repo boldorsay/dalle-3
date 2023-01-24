@@ -16,8 +16,8 @@ html, body{
 }
 .header{
   width: 100vw;
-  height: 100vh;
-  background-image: url(../images/v4_652.png);
+  height: 50vh;
+  background-image: url(../images/HEDET22_0005.png);
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; 
@@ -54,7 +54,16 @@ img{
 }
 .P{
   margin-left: 10px;
+  padding-right: 10px;
 }
+.O{
+  margin-left: 10px;
+  padding-right: 10px;
+}
+.P img{
+  width: 95vw; 
+
+ }
 
   #content{
     /* display: none; */
@@ -336,3 +345,4 @@ img{
     bottom: 30px;
     left: 5%;
   }
+  

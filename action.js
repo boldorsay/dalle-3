@@ -15,6 +15,9 @@ export async function transfert(img, sx, sw, x, prompt, size) {
     size,
   });
 
+  prompt =  'image HDRI ' + prompt;
+
+
   const imgOpen = await generateContent({
     fileImg,
     fileMask,

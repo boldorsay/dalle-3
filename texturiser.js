@@ -41,8 +41,13 @@ export async function generateTexture({ img, x, sx, sw, size = 1024 }) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "white";
   ctx.fillRect(xX, 0, dw, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, 200);
+  ctx.clearRect(0, 825, canvas.width, 200);
+
 
   let dataURL = canvas.toDataURL();
+
+  console.log(dataURL)
 
 
 
