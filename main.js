@@ -42,7 +42,7 @@ window.onload = () => {
   btnCamera.onclick = async () => {
 
 
-      // requestPermission();
+    requestPermission();
     let imgScreen = await cameraToImage(camera);
     imageTake = imgScreen;
 
