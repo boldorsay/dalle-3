@@ -42,7 +42,7 @@ window.onload = () => {
   btnCamera.onclick = async () => {
 
 
-    requestPermission();
+      requestPermission();
     let imgScreen = await cameraToImage(camera);
     imageTake = imgScreen;
 
@@ -114,7 +114,7 @@ window.onload = () => {
 
       
       sphereObj.addTexture(imageFinal);
-      openWindows(imageTop, imageBottom);
+            openWindows(imageTop, imageBottom);
 
 
 
