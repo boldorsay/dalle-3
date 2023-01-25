@@ -11,7 +11,7 @@ html, body{
   padding:0;
   margin:0;
   width:100vw;
-  /* overflow-x: hidden; */
+ overflow-x: hidden; 
   /* overflow-y: hidden; */
 }
 .header{
@@ -55,13 +55,14 @@ img{
 .P{
   margin-left: 10px;
   padding-right: 10px;
+  max-width: 100vw; 
 }
 .O{
   margin-left: 10px;
   padding-right: 10px;
 }
 .P img{
-  width: 95vw; 
+  width: 95%
 
  }
 
